@@ -82,7 +82,7 @@ services:
       file: ./db/docker/docker-compose.yml
       service: auth
     environment:
-      GOTRUE_MAILER_AUTOCONFIRM: true
+      GOTRUE_MAILER_AUTOCONFIRM: "true"
 
   rest:
     <<: *supabase-services

@@ -5,11 +5,6 @@ services:
       dockerfile: autogpt_platform/backend/Dockerfile
       target: server
     command: ["sh", "-c", "poetry run prisma migrate deploy"]
-    develop:
-      watch:
-        - path: ./
-          target: autogpt_platform/backend/migrations
-          action: rebuild
     depends_on:
       db:
         condition: service_healthy
@@ -58,11 +53,6 @@ services:
       dockerfile: autogpt_platform/backend/Dockerfile
       target: server
     command: ["python", "-m", "backend.rest"]
-    develop:
-      watch:
-        - path: ./
-          target: autogpt_platform/backend/
-          action: rebuild
     depends_on:
       redis:
         condition: service_healthy
@@ -106,11 +96,6 @@ services:
       dockerfile: autogpt_platform/backend/Dockerfile
       target: server
     command: ["python", "-m", "backend.exec"]
-    develop:
-      watch:
-        - path: ./
-          target: autogpt_platform/backend/
-          action: rebuild
     depends_on:
       redis:
         condition: service_healthy
@@ -148,11 +133,6 @@ services:
       dockerfile: autogpt_platform/backend/Dockerfile
       target: server
     command: ["python", "-m", "backend.ws"]
-    develop:
-      watch:
-        - path: ./
-          target: autogpt_platform/backend/
-          action: rebuild
     depends_on:
       db:
         condition: service_healthy
